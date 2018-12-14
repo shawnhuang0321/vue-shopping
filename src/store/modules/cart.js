@@ -1,11 +1,13 @@
 import { getCart, addtoCart, removeCart, addCouponCode, createOrder, getOrder, payOrder } from '../../api';
 
 const state = {
-  cart: [],
+  cart: {
+    carts: [],
+  },
   orderId: '',
   order: {
     user: {}
-  }
+  },
 }
 
 const mutations = {

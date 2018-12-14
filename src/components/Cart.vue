@@ -68,7 +68,7 @@ export default {
   computed: {
     ...mapState('cart', ['cart']),
     isCartOpen() {
-      return this.cart.length !== 0;
+      return this.cart.carts.length !== 0;
     }
   },
   methods: {

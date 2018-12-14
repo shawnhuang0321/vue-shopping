@@ -43,6 +43,15 @@
 <script>
 import Pagination from '../Pagination';
 import { mapActions, mapState } from 'vuex';
+import { convertTime } from '../../utils/utils';
+
+const newCoupon = {
+  title: '',
+  code: '',
+  percent: 100,
+  due_date: new Date()/1000,
+  is_enabled: 0
+}
 
 export default {
   name: 'Coupons',
@@ -60,39 +69,16 @@ export default {
   methods: {
     ...mapActions('coupon', ['getCoupons', 'openModal']),
     doOpenModal(type, item, status) {
+      if (status) {
+        item = Object.assign({}, newCoupon);
+      }
+      else {
+        item = Object.assign({}, item);
+      }
       this.openModal({ type, item, status });
     },
-    // updateCoupon() {
-    //   let api = `/admin/coupon`;
-    //   let httpMethod = 'post';
-    //   if (!this.isNew) {
-    //     api = `/admin/coupon/${this.tempCoupon.id}`;
-    //     httpMethod = 'put';
-    //   }
-    //   const newCoupon = Object.assign({}, this.tempCoupon);
-      // newCoupon.percent = Number(newCoupon.percent);
-      // newCoupon.due_date = Math.floor(new Date(newCoupon.due_date).getTime() / 1000);
-    //   this.$http[httpMethod](api, {data: newCoupon}).then(res => {
-    //     const { success, message } = res.data;
-    //     if (success) {
-    //       this.closeModal();
-    //       this.getCoupons();
-    //     }
-    //     else {
-    //       this.closeModal();
-    //       this.$bus.$emit('message:push', message, 'danger')
-    //     }
-    //   })
-    //   $('#couponModal').modal('hide');
-    //   this.getCoupons();
-    //   this.isNew = false;
-    // },
     convertTime(time) {
-      let day = new Date(time * 1000);
-      let year = day.getFullYear();
-      let month = ('0' + (day.getMonth() + 1)).slice(-2);
-      let date = ('0' + day.getDate()).slice(-2);
-      return `${year}-${month}-${date}`;
+      return convertTime(time);
     },
   },
   created() {

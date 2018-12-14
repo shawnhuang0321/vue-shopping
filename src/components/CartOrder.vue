@@ -28,8 +28,12 @@
       
         <div class="form-group">
           <label for="usertel">收件人電話</label>
-          <input type="tel" class="form-control" id="usertel"
+          <input type="tel" class="form-control" name="tel" id="usertel"
+            :class="{ 'is-invalid': errors.has('address') }"
+            v-validate="'required'"
             v-model="form.user.tel" placeholder="請輸入電話">
+          <span class="text-danger"
+            v-if="errors.has('tel')">電話欄位不得留空</span>
         </div>
       
         <div class="form-group">
@@ -77,7 +81,7 @@ export default {
   watch: {
     orderId: function() {
       this.$router.push(`customer_checkout/${this.orderId}`);
-    }
+    },
   },
   computed: {
     ...mapState('cart', ['orderId']),

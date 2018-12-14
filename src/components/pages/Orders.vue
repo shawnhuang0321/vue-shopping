@@ -43,6 +43,7 @@
 <script>
 import Pagination from '../Pagination';
 import { mapActions, mapState } from 'vuex';
+import { convertTime } from '../../utils/utils';
 
 export default {
   name: 'Orders',
@@ -58,11 +59,7 @@ export default {
   methods: {
     ...mapActions('order', ['getOrders']),
     convertTime(time) {
-      let day = new Date(time * 1000);
-      let year = day.getFullYear();
-      let month = day.getMonth();
-      let date = day.getDate();
-      return `${year}/${month}/${date}`;
+      return convertTime(time);
     },
   },
   created() {

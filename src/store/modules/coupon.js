@@ -1,4 +1,5 @@
 import { getCoupons, removeCoupon, updateCoupon } from '../../api';
+import { convertTime } from '../../utils/utils';
 
 const state = {
   pagination: {},
@@ -19,6 +20,7 @@ const mutations = {
   },
 
   SET_TEMP_COUPON(state, item) {
+    item.due_date = convertTime(item.due_date);
     state.tempCoupon = item;
   },
 
@@ -36,8 +38,12 @@ const actions = {
   },
 
   updateCoupon: async ({ dispatch }, coupon) => {
+    coupon = Object.assign({}, coupon);
     let api = `/admin/coupon`;
     let httpMethod = 'post';
+    if (coupon.percent === NaN || '') {
+      coupon.percent = 100
+    }
     coupon.percent = Number(coupon.percent);
     coupon.due_date = Math.floor(new Date(coupon.due_date).getTime() / 1000);
     let item = {

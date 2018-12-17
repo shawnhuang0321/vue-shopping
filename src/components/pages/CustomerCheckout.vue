@@ -5,12 +5,12 @@
         <thead>
           <th>品名</th>
           <th>數量</th>
-          <th>單價</th>
+          <th class="text-right">單價</th>
         </thead>
         <tbody>
           <tr v-for="item in order.products" :key="item.id">
             <td class="align-middle">{{ item.product.title }}</td>
-            <td class="align-middle">{{ item.product.num }}/{{ item.product.unit }}</td>
+            <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
             <td class="align-middle text-right">{{ item.product.price }}</td>
           </tr>
         </tbody>

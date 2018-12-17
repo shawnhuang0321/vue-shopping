@@ -28,7 +28,7 @@
               <span v-else class="text-danger">未啟用</span>
             </td>
             <td>
-              <div class="d-flex">
+              <div class="btn-group">
                 <button @click="doOpenModal('ProductModal', item, false)" class="btn btn-outline-primary">編輯</button>
                 <button @click="doOpenModal('ProductDelModal', item)" class="btn btn-outline-danger">刪除</button>
               </div>

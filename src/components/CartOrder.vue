@@ -48,8 +48,8 @@
         </div>
       
         <div class="form-group">
-          <label for="useraddress">留言</label>
-          <textarea name="" id="" class="form-control" cols="30" rows="10"
+          <label for="message">留言</label>
+          <textarea name="message" id="message" class="form-control" cols="30" rows="10"
             v-model="form.message"></textarea>
         </div>
         <div class="text-right">
@@ -74,13 +74,13 @@ export default {
           tel: '',
           address: ''
         },
-        message: ''
+        message: '',
       }
     }
   },
   watch: {
     orderId: function() {
-      this.$router.push(`customer_checkout/${this.orderId}`);
+      this.$router.push(`/customer/customer_checkout/${this.orderId}`);
     },
   },
   computed: {
@@ -97,7 +97,7 @@ export default {
           this.createOrder(this.form);
         }
       });
-    }
+    },
   },
 }
 </script>

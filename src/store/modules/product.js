@@ -33,7 +33,10 @@ const mutations = {
   },
 
   SET_TEMP_PRODUCT(state, item) {
-    state.tempProduct = item;
+    state.tempProduct = {
+      ...item,
+      num: 1
+    };
   },
 
   SET_TEMP_STATUS(state, status) {

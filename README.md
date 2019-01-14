@@ -2,6 +2,22 @@
 
 > A Vue.js project
 
+## Demo
+[Demo](https://shawnhuang0321.github.io/vue-shopping/#/)
+
+## 簡介
+前端練習作品 - 電商後台
+
+### 運用技術
++ Vue cli (2)
++ Vuex
++ Vue Router
++ axios
++ bootstrap
+
+## 感謝
++ [六角學院 Vue出一個電商](https://www.hexschool.com/vue/)
+
 ## Build Setup
 
 ``` bash
